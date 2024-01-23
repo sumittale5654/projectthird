@@ -1,0 +1,38 @@
+{% extends 'myapp/master.html' %}
+
+{% block title %}registration{% endblock %}
+{% block extra_css %}
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+
+{% endblock %}
+
+{% block content %}
+<body style="font-family: Arial, sans-serif; background-color: #f4f4f4; margin: 0; padding: 0;">
+<h1 style="text-align: center;">Registration Form</h1>
+<form
+    style="width: 50%;margin: 20px auto;padding: 20px;background-color: #fff;border-radius: 8px;box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);"
+    method="post" action="{% url 'registration' %}">
+    {% csrf_token %}
+    <label style="display: block;margin-bottom: 8px;" for="username">Username:</label>
+    <input
+        style="width: calc(100% - 12px);padding: 8px;margin-bottom: 10px;border-radius: 4px; border: 1px solid #ccc;font-size: 16px;"
+        type="text" id="username" name="username"><br><br>
+
+    <label style="display: block;margin-bottom: 8px;" for="email">Email:</label>
+    <input
+        style="width: calc(100% - 12px);padding: 8px;margin-bottom: 10px;border-radius: 4px; border: 1px solid #ccc;font-size: 16px;"
+        type="email" id="email" name="email"><br><br>
+
+    <label style="display: block;margin-bottom: 8px;" for="password">Password:</label>
+    <input
+        style="width: calc(100% - 12px);padding: 8px;margin-bottom: 10px;border-radius: 4px; border: 1px solid #ccc;font-size: 16px;"
+        type="password" id="password" name="password"><br><br>
+
+    <input type="file" id="image" name="image" enctype="multipart/form-data"><br><br>
+
+    <input style=" background-color: #007bff; color: #fff; cursor: pointer; transition: background-color 0.3s; padding:5px; width:300px; margin-left:25%; border:none; border-radius:10px"
+        type="submit" value="Register">
+</form>
+</body>
+{% endblock %}
